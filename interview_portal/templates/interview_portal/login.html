@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% load socialaccount %}
+
+{% block title %}Login{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'interview_portal/styles/login.css' %}">
+{% endblock %}
+
+{% block body %}
+<section class="login-form-container">
+  <div class="login-heading">
+    <h1>Interview Portal</h1>
+    <h1>Login</h1>
+  </div>
+  <a class="google-login-btn" href="{% provider_login_url 'google' %}">
+    <div class="google-logo-container">
+      <img src="{% static 'interview_portal/img/google_logo.png' %}" alt="google icon" width="18px">
+    </div>
+    <div class="login-btn-txt">Sign in with Google</div>
+  </a>
+</section>
+{% endblock %}
