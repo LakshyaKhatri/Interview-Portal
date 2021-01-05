@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -126,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    'interview_portal/templates',
+    BASE_DIR / 'interview_portal' / 'templates',
 ]
 STATIC_ROOT = BASE_DIR / 'static'
 
@@ -137,8 +138,11 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# For Redirection Purpose
 SITE_ID = 1
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_URL = reverse_lazy('login')
+ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
