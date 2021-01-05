@@ -4,6 +4,11 @@ from django.core.validators import RegexValidator
 
 
 class Technology(models.Model):
+    """
+    Technology Model: Contains all the technologies to be
+    used by other models. This model should be treated as a pool
+    for available technologies.
+    """
     class Meta:
         verbose_name_plural = "technologies"
 
@@ -14,6 +19,11 @@ class Technology(models.Model):
 
 
 class Status(models.Model):
+    """
+    Status Model: Contains all the `Status` that an
+    application can have. This model should be treated as
+    a pool for available status options.
+    """
     class Meta:
         verbose_name_plural = "status"
 
@@ -24,6 +34,13 @@ class Status(models.Model):
 
 
 class Application(models.Model):
+    """
+    Application Model: Contains the basic information for
+    a registered application. All of the fields can be used
+    frequently in list views and hence kept together. The detailed
+    information for a single application can be requested along
+    with the `ApplicationDetail` model.
+    """
     name = models.CharField(max_length=100)
     email = models.EmailField()
     TYPE_CHOICES = [('CL', 'Client'), ('CA', 'Candidate')]
@@ -39,6 +56,12 @@ class Application(models.Model):
 
 
 class ApplicationDetail(models.Model):
+    """
+    Application Detail Model: This model will contain additional
+    detail for a single application the model is created with and
+    intent to pass detailed information for a single Application
+    rather than being used in lists views.
+    """
     application = models.OneToOneField(
         Application,
         on_delete=models.CASCADE,
