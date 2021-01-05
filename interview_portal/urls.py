@@ -22,7 +22,11 @@ from interview_portal import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # Authentication
     path('accounts/', include('allauth.urls')),
     path('login/', views.CustomLoginView.as_view(), name='login'),
+
+    # Dashboard
     path('', TemplateView.as_view(template_name='interview_portal/index.html'), name='home'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

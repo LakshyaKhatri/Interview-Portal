@@ -7,13 +7,13 @@ from .models import (
 )
 
 
-class ApplicationInline(admin.StackedInline):
+class ApplicationDetailInline(admin.StackedInline):
     model = ApplicationDetail
 
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    inlines = [ApplicationInline, ]
+    inlines = [ApplicationDetailInline, ]
 
 
 admin.site.register(Technology)
