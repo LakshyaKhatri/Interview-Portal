@@ -24,6 +24,9 @@ urlpatterns = [
     # Allauth URLs
     path('accounts/', include('allauth.urls')),
 
+    # API
+    path('api/v1/', include('dashboard.api.urls')),
+
     # Dashboard
     path('/', include('dashboard.urls', namespace='dashboard')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
