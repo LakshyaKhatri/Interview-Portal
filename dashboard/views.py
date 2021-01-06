@@ -13,4 +13,4 @@ class CustomLoginView(LoginView):
 
 @method_decorator(login_required, name='dispatch')
 class DashboardView(generic.TemplateView):
-    template_name = 'interview_portal/index.html'
+    template_name = 'dashboard/index.html'
