@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+table, th, td {
+  border: 1px solid #cfcfcf;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 8px 10px;
+  font-family: sans-serif;
+  font-weight: normal;
+  font-size: 14px;
+}
+
+th {
+  color: #afaeac;
+}
+
+td {
+  color: #37352f;
+}
+
+.applications-table {
+  width: 100%;
+}
+
+.col-type-txt, .col-technology-txt, .col-status-txt {
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+.col-type-txt {
+  background-color: #ffccd1;
+}
+
+.col-technology-txt {
+  background-color: #cce4f9;
+}
+
+.col-status-txt {
+  background-color: #fddecc;
+}
+
+.col-email-txt {
+  color: #1e90ff;
+}
