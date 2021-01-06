@@ -1,9 +1,7 @@
 from django.urls import path
-from django.views.generic import TemplateView
-from .views import CustomLoginView
+from .views import CustomLoginView, DashboardView
 
-app_name = 'dashboard'
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
-    path('', TemplateView.as_view(template_name='interview_portal/index.html'), name='home'),
+    path('', DashboardView.as_view(), name='home'),
 ]
