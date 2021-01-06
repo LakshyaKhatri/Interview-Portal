@@ -2,8 +2,11 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ApplicationSerializer
 from dashboard.models import Application
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 
+@method_decorator(login_required, name='dispatch')
 class ApplicationListAPIView(APIView):
     """
     Takes request, modifies the application list query according
