@@ -130,6 +130,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'interview_portal' / 'templates',
+    BASE_DIR / 'dashboard' / 'templates',
 ]
 STATIC_ROOT = BASE_DIR / 'static'
 

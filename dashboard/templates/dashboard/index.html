@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'dashboard/styles/main.css' %}">
+{% endblock %}
+
+{% block body %}
+<section class="applications-container">
+  <table class="applications-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Type</th>
+        <th>Technology</th>
+        <th>Status</th>
+        <th>Moved By</th>
+        <th>Updated On</th>
+        <th>Applied On</th>
+      </tr>
+    </thead>
+    <tbody id="applications-tbl"></tbody>
+  </table>
+</section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    $.get("api/v1/applications", function(applicationList, status){
+      $.each(applicationList, function(index, application){
+        const application_row = document.getElementById("applications-tbl").insertRow(-1);
+        application_row.insertCell(-1).innerHTML = application.name;
+        application_row.insertCell(-1).innerHTML = '<span class="col-email-txt">' + application.email + '</span>';
+        application_row.insertCell(-1).innerHTML = '<span class="col-type-txt">' + application.type + '</span>';
+        application_row.insertCell(-1).innerHTML = '<span class="col-technology-txt">' + application.technology + '</span>';
+        application_row.insertCell(-1).innerHTML = '<span class="col-status-txt">' + application.current_status + '</span>';
+        application_row.insertCell(-1).innerHTML = application.moved_by;
+        application_row.insertCell(-1).innerHTML = application.updated_on;
+        application_row.insertCell(-1).innerHTML = application.applied_on;
+      });
+    });
+  </script>
+{% endblock %}
