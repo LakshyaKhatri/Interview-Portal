@@ -28,5 +28,5 @@ urlpatterns = [
     path('api/v1/', include('dashboard.api.urls')),
 
     # Dashboard
-    path('/', include('dashboard.urls', namespace='dashboard')),
+    path('', include('dashboard.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
