@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'interview_portal',
+    'dashboard',
 
     'allauth',
     'allauth.account',
