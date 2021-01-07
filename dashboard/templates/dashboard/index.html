@@ -21,7 +21,7 @@
         <th>Applied On</th>
       </tr>
     </thead>
-    <tbody id="applications-tbl"></tbody>
+    <tbody id="applications-table-body"></tbody>
   </table>
 </section>
 {% endblock %}
@@ -31,8 +31,11 @@
 
   <script type="text/javascript">
     $.get("api/v1/applications", function(applicationList, status){
+      const tableBody = document.getElementById("applications-table-body");
+      tableBody.innerHTML = '';
+
       $.each(applicationList, function(index, application){
-        const application_row = document.getElementById("applications-tbl").insertRow(-1);
+        const application_row = tableBody.insertRow(-1);
         application_row.insertCell(-1).innerHTML = application.name;
         application_row.insertCell(-1).innerHTML = '<span class="col-email-txt">' + application.email + '</span>';
         application_row.insertCell(-1).innerHTML = '<span class="col-type-txt">' + application.type + '</span>';
