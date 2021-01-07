@@ -14,10 +14,24 @@ class ApplicationListAPIView(APIView):
     """
     serializer_class = ApplicationSerializer
 
-    def get_queryset(self, sorting_col='-applied_on'):
-        return Application.objects.all().order_by(sorting_col)
+    def get_queryset(self, sorting_col=None):
+        if sorting_col:
+            sorting_col = sorting_col.replace('-', '_')
+
+            if sorting_col == 'moved_by':
+                return Application.objects.order_by(
+                    sorting_col + '__first_name',
+                    sorting_col + '__last_name'
+                )
+
+            if sorting_col in ('technology', 'status'):
+                sorting_col += '__name'
+            return Application.objects.order_by(sorting_col)
+
+        else:
+            return Application.objects.all().order_by('-applied_on')
 
     def get(self, request, format=None):
-        queryset = self.get_queryset()
+        queryset = self.get_queryset(request.GET.get('sort'))
         serializer = ApplicationSerializer(queryset, many=True)
         return Response(serializer.data)
