@@ -14,10 +14,32 @@ class ApplicationListAPIView(APIView):
     """
     serializer_class = ApplicationSerializer
 
-    def get_queryset(self, sorting_col='-applied_on'):
-        return Application.objects.all().order_by(sorting_col)
+    def get_db_col_name(self, sort_kw):
+        """
+        Takes a sort keyword and returns corrosponding
+        column name suitable for db queries.
+        """
+        if not sort_kw:
+            return '-applied_on'
+        sort_kw = sort_kw.replace('-', '_')
+        sort_kw = '-' + sort_kw[1:] if sort_kw.startswith('_') else sort_kw
+
+        if sort_kw in ('technology', 'status'):
+            sort_kw += '__name'
+            return sort_kw
+        if sort_kw == 'moved_by':
+            return (
+                sort_kw + '__first_name',
+                sort_kw + '__last_name'
+            )
+
+        return sort_kw
+
+    def get_queryset(self, sorting_col):
+        return Application.objects.order_by(sorting_col)
 
     def get(self, request, format=None):
-        queryset = self.get_queryset()
+        db_col_name = self.get_db_col_name(request.GET.get('sort'))
+        queryset = self.get_queryset(db_col_name)
         serializer = ApplicationSerializer(queryset, many=True)
         return Response(serializer.data)

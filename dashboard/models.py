@@ -46,7 +46,7 @@ class Application(models.Model):
     TYPE_CHOICES = [('CL', 'Client'), ('CA', 'Candidate')]
     type = models.CharField(max_length=2, choices=TYPE_CHOICES, default='CA')
     technology = models.ForeignKey('Technology', on_delete=models.PROTECT)
-    current_status = models.ForeignKey(Status, on_delete=models.PROTECT)
+    status = models.ForeignKey(Status, on_delete=models.PROTECT)
     applied_on = models.DateTimeField(auto_now_add=True)
     moved_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     updated_on = models.DateTimeField(auto_now=True)
