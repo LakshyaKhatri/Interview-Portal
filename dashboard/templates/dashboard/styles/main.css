@@ -17,6 +17,7 @@ th, td {
 
 th {
   color: #afaeac;
+  cursor: pointer;
 }
 
 td {
@@ -46,4 +47,14 @@ td {
 
 .col-email-txt {
   color: #1e90ff;
+}
+
+.th-cell {
+  display: flex;
+  justify-content: space-between;
+  margin: none;
+}
+
+.fa-sort-asc, .fa-sort-desc {
+  display: none;
 }

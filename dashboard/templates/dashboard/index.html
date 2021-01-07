@@ -3,6 +3,7 @@
 
 {% block title %}Home{% endblock %}
 {% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'dashboard/styles/main.css' %}">
 {% endblock %}
 
@@ -11,14 +12,62 @@
   <table class="applications-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Type</th>
-        <th>Technology</th>
-        <th>Status</th>
-        <th>Moved By</th>
-        <th>Updated On</th>
-        <th>Applied On</th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Name</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Email</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Type</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Technology</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Status</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Moved By</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Updated On</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
+        <th onclick="sort_applications(this)">
+          <div class="th-cell">
+            <span>Applied On</span>
+            <i class="fa fa-sort-desc"></i>
+            <i class="fa fa-sort-asc"></i>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody id="applications-table-body"></tbody>
