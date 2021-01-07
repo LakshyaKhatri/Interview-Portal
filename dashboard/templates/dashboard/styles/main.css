@@ -51,10 +51,21 @@ td {
 
 .th-cell {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   margin: none;
 }
 
 .fa-sort-asc, .fa-sort-desc {
-  display: none;
+  /* display: none; */
+  margin: 0;
+  padding: 0;
+  line-height: 2px;
+}
+
+.sorting-arrows {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -30,18 +30,18 @@ let ascending = true;
 populateApplications()    // Populate applications for the first time
 
 function sort_applications(colHeadSpan){
-  let downArrow = $(colHeadSpan).next();
-  let upArrow = downArrow.next();
+  let upArrow = $(colHeadSpan).next().children().first();
+  let downArrow = upArrow.next();
 
   if (colHeadSpan.id === currentSortingCol) {
     // If user clicked on same column again
     ascending = !ascending;
   } else {
     // If user clicked on another column
-    // first remove arrows from that column header
-    let prevArrow = $('#' + currentSortingCol).next();
-    prevArrow.css('display', 'none');
-    prevArrow.next().css('display', 'none');
+    // set previously clicked column's arrows to their original state
+    let prevArrow = $('#' + currentSortingCol).next().children().first();
+    prevArrow.css('display', 'inline');
+    prevArrow.next().css('display', 'inline');
 
     // update current sorting column
     currentSortingCol = colHeadSpan.id;
