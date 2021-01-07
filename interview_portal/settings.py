@@ -143,7 +143,7 @@ AUTHENTICATION_BACKENDS = (
 
 # For Redirection Purpose
 SITE_ID = 1
-LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
 ACCOUNT_LOGOUT_REDIRECT_URL = reverse_lazy('login')
 
