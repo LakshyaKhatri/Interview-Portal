@@ -8,7 +8,7 @@ class CustomLoginView(LoginView):
     """
     Changes the default login template from Django-Allauth
     """
-    template_name = 'interview_portal/login.html'
+    template_name = 'dashboard/login.html'
 
 
 @method_decorator(login_required, name='dispatch')
