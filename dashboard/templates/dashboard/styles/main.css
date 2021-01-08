@@ -56,8 +56,8 @@ td {
   margin: none;
 }
 
-.fa-sort-asc, .fa-sort-desc {
-  line-height: 1px;
+.fa-angle-up, .fa-angle-down {
+  line-height: 8px;
 }
 
 .sorting-arrows {
