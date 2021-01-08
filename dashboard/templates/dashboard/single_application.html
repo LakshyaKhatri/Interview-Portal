@@ -6,6 +6,7 @@
 {% block css %}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'dashboard/styles/single_application.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/styles/custom_select.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -15,13 +16,8 @@
     <i class="fa fa-angle-left" aria-hidden="true"></i>
     Applications
   </a>
-  <select class="status-select">
-    <!-- Add forward and backwards icons here -->
-    <option value="volvo">Volvo</option>
-    <option value="saab">Saab</option>
-    <option value="mercedes">Mercedes</option>
-    <option value="audi">Audi</option>
-  </select>
+
+  {% include 'dashboard/custom_select.html' %}
   <a href="save link" class="save-btn">Update</a>
 </header>
 </section>
@@ -97,4 +93,8 @@
 <section class="comments-sec">
 
 </section>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'dashboard/js/custom_select.js'%}"" charset="utf-8"></script>
 {% endblock %}
