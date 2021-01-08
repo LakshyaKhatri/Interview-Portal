@@ -1,3 +1,9 @@
+/*
+ * WARNING : This script defines the behaviour of custom HTML `<select>` tag and
+ * has NO BUSINESS LOGIC inside it. Edit this only when you are sure
+ * about what you are doing.
+ */
+
 var x, i, j, l, ll, selElmnt, a, b, c;
 
 /* Look for any elements with the class "custom-select": */
