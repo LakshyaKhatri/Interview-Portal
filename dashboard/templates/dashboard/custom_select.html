@@ -1,7 +1,14 @@
 <div class="custom-select" style="width:200px;">
   <select>
-    <option value="0">Select car:</option>
-    <option value="1">Audi</option>
-    <option value="2">BMW</option>
+    <!-- Adding this option explicitly since selected item will
+    override the first option in the list -->
+    <option value="1">Applied</option>
+    {% for status in status_list %}
+      {% if status.name == application.application.status.name %}
+        <option value="{{ status.id }}" selected>{{ status.name }}</option>
+      {% else %}
+        <option value="{{ status.id }}">{{ status.name }}</option>
+      {% endif %}
+    {% endfor %}
   </select>
 </div>

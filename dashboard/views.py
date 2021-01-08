@@ -2,7 +2,7 @@ from allauth.account.views import LoginView
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import ApplicationDetail
+from .models import ApplicationDetail, Status
 
 
 class CustomLoginView(LoginView):
@@ -26,3 +26,8 @@ class SingleApplicationView(generic.DetailView):
     model = ApplicationDetail
     template_name = 'dashboard/single_application.html'
     context_object_name = 'application'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['status_list'] = Status.objects.order_by('id')
+        return context
