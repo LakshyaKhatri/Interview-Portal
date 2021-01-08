@@ -1,12 +1,100 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Application Name | Dashboard{% endblock %}
+{% block title %}{{ application.application.name }} | Dashboard{% endblock %}
 
 {% block css %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'dashboard/styles/single_application.css' %}">
 {% endblock %}
 
 {% block body %}
-{{ application.application.name }}
+<section>
+<header class="top-header">
+  <a href="back link" class="back-btn">
+    <i class="fa fa-angle-left" aria-hidden="true"></i>
+    Applications
+  </a>
+  <select class="status-select">
+    <!-- Add forward and backwards icons here -->
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+  <a href="save link" class="save-btn">Update</a>
+</header>
+</section>
+
+
+<section class="details-sec">
+  <div class="details-container">
+    <div class="basic-details-container">
+      <div class="name-type-row">
+        <h1 class="name">
+          {% if application.application.type == "CA" %}
+            <i class="name-icon fa fa-user-o" aria-hidden="true"></i>
+          {% else %}
+            <i class="fa fa-cubes" aria-hidden="true"></i>
+          {% endif %}
+          {{ application.application.name }}
+        </h1>
+        <p class="type-tag">{{ application.application.get_type_display }}</p>
+      </div>
+
+      <div class="email-phone-container">
+        <div class="email-container">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          <a class="email" href="mailto:{{ application.application.email }}">
+            {{ application.application.email }}
+          </a>
+        </div>
+
+        <p class="phone-number">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          {{ application.phone_number }}
+        </p>
+      </div>
+    </div>
+
+    <div class="horizontal-line"></div>
+
+    <div class="extra-details-container">
+
+      <p class="applied-on-txt">
+        <i class="fa fa-calendar-o" aria-hidden="true"></i>
+        <label>Applied On:</label>
+        {{ application.application.applied_on|date:"D, d M Y" }}
+      </p>
+
+      <p class="applied-for-txt">
+        <i class="fa fa-id-badge" aria-hidden="true"></i>
+        <label>Applied For:</label>
+        {{ application.applying_for }}
+      </p>
+
+      <div class="description-container">
+        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+        <label>Description:</label>
+        <p class="description-txt">
+          {{ application.description }}
+        </p>
+      </div>
+
+      <div class="watcher-container">
+        <i class="fa fa-eye" aria-hidden="true"></i>
+        <label>Watchers:</label>
+        <div class="watcher-tag-container">
+          {% for watcher in application.watchers.all %}
+            <p class="watcher-email">{{ watcher.email }}</p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="comments-sec">
+
+</section>
 {% endblock %}
