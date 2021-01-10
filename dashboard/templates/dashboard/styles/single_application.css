@@ -27,21 +27,53 @@ body {
   flex-wrap: wrap;
 }
 
-.back-btn, .save-btn {
+.back-btn, .update-btn {
   text-decoration: none;
+  border: none;
   background-color: #2eaadc;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
   box-shadow: 1px 1px 2px #0000003f;
+  font-size: 16px;
 }
 
-.back-btn:hover, .save-btn:hover{
+.back-btn:hover, .update-btn:hover{
   background-color: #3db1df;
 }
 
-.back-btn:active, .save-btn:active{
+.back-btn:active, .update-btn:active{
   background-color: #19a5dd;
+}
+
+ /* This is for adding and removing spinner before the "Update" text */
+.update-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.spinner {
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+}
+
+.spinner--hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .back-btn {

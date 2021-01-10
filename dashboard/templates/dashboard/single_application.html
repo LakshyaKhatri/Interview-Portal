@@ -12,13 +12,17 @@
 {% block body %}
 <section>
 <header class="top-header">
-  <a href="back link" class="back-btn">
+  <button href="back link" class="back-btn">
     <i class="fa fa-angle-left" aria-hidden="true"></i>
     Applications
-  </a>
+  </button>
 
+  <!-- `<select>` for status selection -->
   {% include 'dashboard/custom_select.html' %}
-  <a href="save link" class="save-btn">Update</a>
+  <button class="update-btn">
+    <div class="spinner"></div>
+    <span>Update</span>
+  </button>
 </header>
 </section>
 
@@ -97,5 +101,7 @@
 {% endblock %}
 
 {% block scripts %}
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="{% static 'dashboard/js/custom_select.js'%}"" charset="utf-8"></script>
+  <script src="{% static 'dashboard/js/single_application.js'%}"" charset="utf-8"></script>
 {% endblock %}
