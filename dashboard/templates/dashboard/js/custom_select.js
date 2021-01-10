@@ -49,6 +49,7 @@ for (i = 0; i < l; i++) {
          }
        }
        h.click();
+       $(selElmnt).change();
    });
    b.appendChild(c);
  }
