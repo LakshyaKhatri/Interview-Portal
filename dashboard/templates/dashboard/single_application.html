@@ -17,12 +17,16 @@
     Applications
   </button>
 
-  <!-- `<select>` for status selection -->
-  {% include 'dashboard/custom_select.html' %}
+  <form id="update-status-form" method="post">
+    {% csrf_token %}
+    <!-- `<select>` for status selection -->
+    {% include 'dashboard/custom_select.html' %}
+  </form>
   <button class="update-btn">
     <div class="spinner"></div>
     <span>Update</span>
   </button>
+
 </header>
 </section>
 
@@ -98,6 +102,7 @@
 <section class="comments-sec">
 
 </section>
+<p id="current-application">{{ application.pk }}</p>
 {% endblock %}
 
 {% block scripts %}
