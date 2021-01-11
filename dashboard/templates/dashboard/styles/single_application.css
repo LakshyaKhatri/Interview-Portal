@@ -27,20 +27,23 @@ body {
   flex-wrap: wrap;
 }
 
-.back-btn, .save-btn {
+.back-btn, .update-btn {
   text-decoration: none;
   background-color: #2eaadc;
   color: white;
   padding: 8px 15px;
   border-radius: 5px;
   box-shadow: 1px 1px 2px #0000003f;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.back-btn:hover, .save-btn:hover{
+.back-btn:hover, .update-btn:hover{
   background-color: #3db1df;
 }
 
-.back-btn:active, .save-btn:active{
+.back-btn:active, .update-btn:active{
   background-color: #19a5dd;
 }
 
