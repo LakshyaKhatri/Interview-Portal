@@ -1,9 +1,11 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import ApplicationSerializer
-from dashboard.models import Application
+from dashboard.models import Application, Status
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from rest_framework.decorators import api_view
+from rest_framework import status as http_status
 
 
 @method_decorator(login_required, name='dispatch')
@@ -43,3 +45,23 @@ class ApplicationListAPIView(APIView):
         queryset = self.get_queryset(db_col_name)
         serializer = ApplicationSerializer(queryset, many=True)
         return Response(serializer.data)
+
+
+@login_required
+@api_view(['GET', 'POST'])
+def update_status_apiview(request, pk):
+    current_application = None
+    application_status = None
+
+    try:
+        current_application = Application.objects.get(pk=pk)
+        application_status = Status.objects.get(pk=request.data.get('status'))
+        current_application.status = application_status
+        current_application.save()
+        return Response({'message': 'Status updated successfully'})
+
+    except Application.DoesNotExist:
+        return Response({'message': 'Application not found'}, status=http_status.HTTP_404_NOT_FOUND)
+
+    except Status.DoesNotExist:
+        return Response({'message': 'Status not found'}, status=http_status.HTTP_404_NOT_FOUND)
