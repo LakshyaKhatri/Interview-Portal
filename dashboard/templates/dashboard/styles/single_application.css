@@ -1,0 +1,201 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f6f8fa;
+  font-family: sans-serif;
+}
+
+.fa {
+  color: #afaeac;
+}
+
+.top-header{
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 2px 2px #0000002f;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 12px 10px;
+  position: sticky;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+.back-btn, .update-btn {
+  text-decoration: none;
+  border: none;
+  background-color: #2eaadc;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px #0000003f;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-btn:hover, .update-btn:hover{
+  background-color: #3db1df;
+}
+
+.back-btn:active, .update-btn:active{
+  background-color: #19a5dd;
+}
+
+ /* This is for adding and removing spinner before the "Update" text */
+.update-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.update-btn:disabled {
+  cursor: not-allowed;
+}
+
+.spinner {
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  width: 15px;
+  height: 15px;
+  border: 2px solid white;
+  border-bottom: 2px solid rgba(0,0,0,0);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-right: 10px;
+  display: none;
+}
+
+.spinner--hidden {
+  display: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.back-btn {
+  margin-right: auto;
+}
+
+.back-btn i {
+  color: white;
+}
+
+.status-select {
+  margin-right: 20px;
+}
+
+.details-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin-top: 5px;
+}
+
+.details-container {
+  width: 85%;
+  background-color: white;
+  box-shadow: 1px 1px 3px #0000002f;
+  border-radius: 4px;
+  padding: 5px 30px 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.name-type-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.type-tag, .status-tag {
+  margin-left: 50px;
+  background-color: #ffccd1;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.status-tag {
+  background-color: #e8d5cc;
+}
+
+.email-phone-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 4px;
+}
+
+.email {
+  text-decoration: none;
+  color: #1e90ff;
+  margin-left: 7px;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
+.phone-number {
+  margin-left: 75px;
+  margin-top: 0;
+}
+
+.phone-number i, .applied-on-txt i, .applied-for-txt i, .description-container i {
+  margin-right: 7px;
+}
+
+.horizontal-line {
+  background-color: #cccccc;
+  height: 1px;
+}
+
+.extra-details-container{
+  margin-left: 5px;
+}
+
+label {
+  color: #afaeac;
+}
+
+.description-txt {
+  margin-top: 10px;
+  padding: 15px 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+.watcher-tag-container {
+  margin-top: 10px;
+  padding: 0px 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.watcher-email {
+  font-size: 12px;
+  background-color: #e0d3f9;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+#current-application {
+  display: none;
+}

@@ -2,6 +2,7 @@ from allauth.account.views import LoginView
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from .models import ApplicationDetail, Status
 
 
 class CustomLoginView(LoginView):
@@ -13,4 +14,20 @@ class CustomLoginView(LoginView):
 
 @method_decorator(login_required, name='dispatch')
 class DashboardView(generic.TemplateView):
+    """
+    Dashboard View uses ajax to load data from API views,
+    hence a template view is used here.
+    """
     template_name = 'dashboard/index.html'
+
+
+@method_decorator(login_required, name='dispatch')
+class SingleApplicationView(generic.DetailView):
+    model = ApplicationDetail
+    template_name = 'dashboard/single_application.html'
+    context_object_name = 'application'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['status_list'] = Status.objects.order_by('id')
+        return context

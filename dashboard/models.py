@@ -75,4 +75,4 @@ class ApplicationDetail(models.Model):
     phone_number = models.CharField(max_length=17, validators=[phone_regex])
     applying_for = models.CharField(max_length=100)
     description = models.TextField()
-    watcher = models.ManyToManyField(User)
+    watchers = models.ManyToManyField(User)
