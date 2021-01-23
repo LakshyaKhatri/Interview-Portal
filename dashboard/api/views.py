@@ -32,7 +32,6 @@ class ApplicationListAPIView(APIView):
                 sort_kw + '__first_name',
                 sort_kw + '__last_name'
             )
-
         return (sort_kw, )
 
     def get_queryset(self, sorting_cols):
